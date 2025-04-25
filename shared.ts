@@ -20,7 +20,7 @@ export const LOGIN_URL: string =
  * The link to your target concert, on the Melon Global website.
  */
 export const CONCERT_URL =
-  "https://tkglobal.melon.com/performance/index.htm?langCd=EN&prodId=210470"
+  "https://tkglobal.melon.com/performance/index.htm?langCd=EN&prodId=211159"
 
 /**
  * Sometimes, concerts run over multiple days.
