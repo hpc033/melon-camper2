@@ -19,7 +19,7 @@ const logIn = async () => {
   await page.locator("#email").fill(CREDENTIALS.email)
   await page.locator("#pwd").fill(CREDENTIALS.password)
   await page.locator("#formSubmit").click()
-  await page.waitForNavigation({ url: LOGIN_URL, waitUntil: 'networkidle', timeout: 30000 });
+  await page.waitForNavigation({ url: LOGIN_URL, waitUntil: 'networkidle', timeout: 100000 });
   //await page.waitForNetworkIdle()
 }
 
