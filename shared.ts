@@ -14,13 +14,13 @@ export const IS_HEADLESS: boolean = false
  * The link to the Melon Global login page.
  */
 export const LOGIN_URL: string =
-  "https://gmember.melon.com/login/login_form.htm?langCd=ko-KR"
+  "https://gmember.melon.com/login/login_form.htm?langCd=EN"
 
 /**
  * The link to your target concert, on the Melon Global website.
  */
 export const CONCERT_URL =
-  "https://tkglobal.melon.com/performance/index.htm?langCd=ko-KR&prodId=211212"
+  "https://tkglobal.melon.com/performance/index.htm?langCd=EN&prodId=211212"
 
 /**
  * Sometimes, concerts run over multiple days.
