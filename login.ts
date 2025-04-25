@@ -14,8 +14,7 @@ const saveCookies = async () => {
     console.error("Error saving cookies:", error)
   }
 }
-
-const logIn = async () => {
+const logIn = async (page: puppeteer.Page) => {
   // 先设置全局超时（必须！）
   page.setDefaultNavigationTimeout(100000); // 100秒
   page.setDefaultTimeout(60000); // 60秒
@@ -26,10 +25,10 @@ const logIn = async () => {
       waitUntil: 'networkidle0', 
       timeout: 100000 
     }),
-  await page.locator("#email").fill(CREDENTIALS.email)
-  await page.locator("#pwd").fill(CREDENTIALS.password)
-  await page.locator("#formSubmit").click()
-
+    page.locator("#email").fill(CREDENTIALS.email),
+    page.locator("#pwd").fill(CREDENTIALS.password),
+    page.locator("#formSubmit").click()
+  ]);
 }
 
 const browser = await puppeteer.launch({ headless: IS_HEADLESS })
