@@ -19,8 +19,8 @@ const logIn = async () => {
   await page.locator("#email").fill(CREDENTIALS.email)
   await page.locator("#pwd").fill(CREDENTIALS.password)
   await page.locator("#formSubmit").click()
-
-  await page.waitForNetworkIdle()
+  await page.waitForNavigation({ url: LOGIN_URL, waitUntil: 'networkidle', timeout: 30000 });
+  #await page.waitForNetworkIdle()
 }
 
 const browser = await puppeteer.launch({ headless: IS_HEADLESS })
