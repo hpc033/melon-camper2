@@ -31,12 +31,19 @@ const logIn = async (page: puppeteer.Page) => {
   ]);
 }
 
-const browser = await puppeteer.launch({ headless: IS_HEADLESS })
-const page = await browser.newPage()
+// 主流程需要这样调用
+const browser = await puppeteer.launch({ 
+  headless: IS_HEADLESS,
+  args: ['--no-sandbox', '--lang=ko-KR'] 
+});
 
-await loadBrowser(page, LOGIN_URL)
+const page = await browser.newPage();
+await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...');
 
-await logIn()
-await saveCookies()
-
-await browser.close()
+try {
+  await loadBrowser(page, LOGIN_URL);
+  await logIn(page);
+  await saveCookies(page);
+} finally {
+  await browser.close();
+}
