@@ -16,11 +16,20 @@ const saveCookies = async () => {
 }
 
 const logIn = async () => {
+  // 先设置全局超时（必须！）
+  page.setDefaultNavigationTimeout(100000); // 100秒
+  page.setDefaultTimeout(60000); // 60秒
+
+  // 更可靠的登录逻辑
+  await Promise.all([
+    page.waitForNavigation({ 
+      waitUntil: 'networkidle0', 
+      timeout: 100000 
+    }),
   await page.locator("#email").fill(CREDENTIALS.email)
   await page.locator("#pwd").fill(CREDENTIALS.password)
   await page.locator("#formSubmit").click()
-  await page.waitForNavigation({ url: LOGIN_URL, waitUntil: 'networkidle', timeout: 100000 });
-  //await page.waitForNetworkIdle()
+
 }
 
 const browser = await puppeteer.launch({ headless: IS_HEADLESS })
